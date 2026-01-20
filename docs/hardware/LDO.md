@@ -10,4 +10,5 @@ As recommended, a 0.47µC Cin will be used.
 As we have plenty of headroom on Vin, a protective TVS does not seems necessary.
 
 The expected layout is presented in the following figure
+
 ![alt text](details/IT-LDO-LAYOUT.png)
