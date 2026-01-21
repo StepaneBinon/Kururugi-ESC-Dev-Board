@@ -32,7 +32,7 @@ We should start to see depletion, taking $C_{boot} = 700nF$, problem appears aro
 
 ## Technical Brief: Selection of the Bootstrap Diode $D_{boot}$
 
-We estimate the resitance of each diode to be $R_{BSD}=21.5\Omega$, thus $I_{DD,peak} = \frac{10}{R_{BSD}}=465mA$, from empty to full. This is an RC system, that will be charged in $t_{charge} = 5*\tau = 5*RC = 86\mu s$. If we take $C = 87.7nF$, then $t_{charge} = 1.8\mu s$. Some value analysis
+We estimate the resitance of each diode to be $R_{BSD}=21.5\Omega$, thus $I_{DD,peak} = \frac{10}{R_{BSD}}=465mA$, from empty to full. This is an RC system, that will be charged in $t_{charge} = 4*\tau = 4*RC = 69\mu s$. If we take $C = 87.7nF$, then $t_{charge} = 7.54\mu s$. Some value analysis
 
 - At 128kHz and 99% duty cycle $0.8\mu s$ are available to charge the system (ultimate goal). 
 - At 96kHz and 99% duty cycle, $1.0\mu s$ are available to charge the system. 
@@ -40,22 +40,22 @@ We estimate the resitance of each diode to be $R_{BSD}=21.5\Omega$, thus $I_{DD,
 - At 48kHz and 99% duty cycle, $2.1\mu s$ are available to charge the system.
 - At 24kHz and 99% duty cycle, $4.2\mu s$ are available to charge the system.
 
-So $t_{charge} = 1.8\mu s$, seems far to limited as no margin is even taken. A external diode seems to be needed.
+So $t_{charge} = 1.8\mu s$, seems far to limited as no margin is even taken. A external diode seems to be needed. The external diode must have a very low reverse current, be adaptage to $V_g = V_{batt}+V_{in} = 60 + 10 = 70V$ in wroste case scenario. We chosed to use a ES1B for its current capabilities and its fast $15ns$ recovery time. With those carateristics, an external resistor of $5\Omega$ must be added, bringing the total resistance to $4.1\Omega$ and $t_{charge} = 1.4\mu s$. This resistor will have to be pulse resistant.
 
+_Note1_: This is hardly enough for the 128kHz, but it might be impossible to go at such a speed in the first place. Improvement will come later. 
 
+_Note2_: For the current computation, 10V is considered. For $C = 87.7nF$, $800-87.7nF$ are already charged. Hence the tension will be much much higher, allowing for a lower resistance. We still have to be careful of first charges from 0V to 10V. 
 
+## Technical Brief: Selection of the Bootstrap Diode $R_{gate}$
 
------
-Draft:
+We can change these capacitance after installation so we will first select one that allows low EMI to ensure reliability. 
 
-The termal dissipation is then of $P = R_{BSD}*I_{DD,mean}^2 = 1.157W$. 
-$F_{SW,max} = 128kHz$, $Q_{T,max} = Q_g + Q_{boot} = 920nC$ and $I_{DDO}=3.2mA$
-$I_{DD,mean} \approx I_{DDO} + Q_T*F_{SW,max} = 120.96mA$, 
+It is important to keep $R_{G,off}$ low so it is immune to displacement current generate by the strong $\frac{dv}{dt}$ on swithcing. This can cause self turn on if $R_{G,off}$ is too high as electron can accumulate in the gate. 
 
-----
+We will take $R_{G,on} = 10\Omega$ and $R_{G,off} = 5\Omega => 10\Omega$ as resistances are parallel. We will use the same diode as for the bootstrap capacitor.
 
-## Technical Brief: Selection of the Bootstrap Diode $D_{boot}$
+_Note1_: These are very EMI safe values.
 
 ## Technical Brief: Selection of the Bypass Capacitor $C_{V_{dd}}$
 
-Common rules is to have $C_{Vdd} \geq 10 \sim 20 * C_{boot}$. Hence, for safety, we will take 
+Common rules is to have $C_{Vdd} \geq 10 \sim 20 * C_{boot}$. Hence, for safety, we will take 15µF in a 3216m/3225m package.
