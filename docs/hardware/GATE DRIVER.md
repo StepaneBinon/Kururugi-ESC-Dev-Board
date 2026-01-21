@@ -46,7 +46,7 @@ _Note1_: This is hardly enough for the 128kHz, but it might be impossible to go 
 
 _Note2_: For the current computation, 10V is considered. For $C = 87.7nF$, $800-87.7nF$ are already charged. Hence the tension will be much much higher, allowing for a lower resistance. We still have to be careful of first charges from 0V to 10V. 
 
-## Technical Brief: Selection of the Bootstrap Diode $R_{gate}$
+## Technical Brief: Selection of the Gate Resistor $R_{G}$
 
 We can change these capacitance after installation so we will first select one that allows low EMI to ensure reliability. 
 
