@@ -9,6 +9,6 @@ Taking some margin, we will size the buck for $I_{O,max}=1.0A$. The highest oper
 
 $L_{\min} = \frac{V_O \times \left( V_{IN,\max} - V_O \right)}{V_{IN,\max} \times F_{SW}\times  I_{O,\max}\times  0.4} = 18\mu H$
 
-So the peak to peak curent is $\Delta I_L = \frac{V_O \left( V_{IN} - V_O \right)}{V_{IN} \, f_{SW} \, L} = 397mA$. And the max current is 1+0.397/2=1.198A which is less than the high side mostfet current limit.
+So the peak to peak curent is $\Delta I_{L,\max} = \frac{V_O \left( V_{IN} - V_O \right)}{V_{IN} \, f_{SW} \, L} = 397mA$ and $\Delta I_{L,\max} = 103mA$. And the max current is 1+0.397/2=1.198A which is less than the high side mostfet current limit.
 
 The selected inductor must have a saturation above 2.875A, to be able to take overload and short circuit conditions.
