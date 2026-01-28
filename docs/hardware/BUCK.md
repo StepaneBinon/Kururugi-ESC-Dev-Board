@@ -8,3 +8,7 @@ Technical Briefs on design choices are available at the following location:
 - [Ripple Generation](details/BUCK/ripple_generation.md)
 - [Selection of the inductor](details/BUCK/selection_inductor.md)
 - [Other choices](details/BUCK/other_choices.md)
+
+Following is the pinout of the IC:
+
+![alt text](details/BUCK_înout.png)

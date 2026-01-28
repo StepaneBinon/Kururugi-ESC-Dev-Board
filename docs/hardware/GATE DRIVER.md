@@ -1,5 +1,9 @@
 # Gate Driver
 
+![alt text](details/GD_pinout.png)
+
+We will use the INFINEON 2EDL8024 as it is the one that allows the most source and sink current and the pin can be driven independently, which is great as the MCU will be resonsible for dead time. For the package, we chosed to use the VDSON-8 which is 4x4mm, slighlty lqrger, it allows better cooling and we already have a recommended footprint for it.
+
 ## Technical Brief: Selection of the Bootstrap Capacitor $C_{boot}$
 
 An usual value in the drone context is to take Cg=1µf. Lets check it is ok with my configuration. We can use the datasheet of the INFINEON 2EDL8X2X.
