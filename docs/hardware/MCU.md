@@ -21,9 +21,9 @@ All these give us a lot of headroom to build the fastest ESC possible.
 ## STM32G484 — GPIO / Peripherals for Sensorless FOC ESC
 
 ### Inputs
-- Phase currents **Ia, Ib, Ic** → **3× ADC**
-- DC bus voltage **Vbus** → **1× ADC**
-- Board / FET temperature (NTC) → **1× ADC**
+- Phase currents **Ia, Ib, Ic** → **3× PGA OPAMP ( → 3× ADC internally)**
+- DC bus voltage **Vbus** → **1× PGA OPAMP ( → 1× ADC internally)**
+- Board / FET temperature (NTC) → **1× PGA OPAMP ( → 1× ADC internally)**
 - Throttle / command input:  → **1× Timer input (DMA)**
     - **DSHOT**
     - **PWM / PPM (alternative)**
