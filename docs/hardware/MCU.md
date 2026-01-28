@@ -5,7 +5,7 @@ For the Microcontroller Unit, the STM32G484 will be used. It was chosen to use a
 1. STM32G484CE**T**6: which comes in a LQFP48 (7x7mm) package
 2. STM32G484CE**U**6: which comes in a UFQFPN48 (7x7mm) package and provide more GPIO pins, an UART port and 1 additionnal ADC channel compare to 1. It is also almost two times cheaper per unit on JLCPCB.
 
-Thus, we will use a STM32G484CEU6 even if the soldering will be more challenging
+Thus, we will use a STM32G484CEU6 even if the soldering will be more challenging.
 
 ## What is the STM32G4 familly ?
 
@@ -18,19 +18,44 @@ To ensure we had some headroom for the development board we are going to use the
 
 All these give us a lot of headroom to build the fastest ESC possible.
 
-## GPIO needed for the STM32G484
+## STM32G484 — GPIO / Peripherals for Sensorless FOC ESC
 
-Inputs needed:
-1. Phase currents for the 3 phases (Ia, Ib, Ic) -> 3ADC
-2. DC bus voltage (from battery) -> 1ADC
+### Inputs
+- Phase currents **Ia, Ib, Ic** → **3× ADC**
+- DC bus voltage **Vbus** → **1× ADC**
+- Board / FET temperature (NTC) → **1× ADC**
+- Throttle / command input:  → **1× Timer input (DMA)**
+    - **DSHOT**
+    - **PWM / PPM (alternative)**
+- Reset button → **1× GPIO**
 
-(OR 2. Voltage of the 3 phases -> 3ADC,  can be infered from PWM and Vbus)
+### Outputs
+- 3-phase inverter drive  
+    → **TIM1 or HRTIM: 3 PWM + 3 complementary outputs + deadtime**
+- Buzzer → **1× GPIO**
+- Status RGB LEDs → **3× GPIO** 
 
-3. Board temperature -> 1ADC on FET side ideally
-4. DSHOT/UART/PWM -> 1 timer capture
-5. JLink
-6. USB?
+### Bidirectional / Debug / Communication
 
-Outputs needed:
-1. 6 phase PWM -> 3 timer output + complementary
+- **SWD (J-Link)**
+    - **SWDIO**: Bidirectional data line (debug + flash) → **PA13**
+    - **SWCLK**: Debug clock → **PA14**  
+    - **NRST**: Allows full device reset, recovery from bad clock / low-power lockups → **NRST pin**
+    - **SWO (ITM trace)**: Real-time printf / event tracing (single-wire trace) → **PB3**  
+- **USB FS (CDC / DFU)**
+    - **USB_DM**: Differential data line (D−) → **PA11**  
+    - **USB_DP**: Differential data line (D+) → **PA12** 
+    - **VBUS sense**: Used to detect cable presence → **1x GPIO**
 
+### Grand Total
+
+- **ADC pins**: 5  
+- **PWM pins**: 6  
+- **Timer input pins**: 1  
+- **USB pins**: 2  
+- **GPIO pins**: 6  
+- **Debug pins**: 4  
+
+➡️ **Total MCU pins used: 24**
+
+The STM32G484CEU6 will provide 48 pins, which should be largely enough.
