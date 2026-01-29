@@ -18,8 +18,6 @@ To ensure we had some headroom for the development board we are going to use the
 
 All these give us a lot of headroom to build the fastest ESC possible.
 
-
-
 ## Technical Briefs
 
 Technical Briefs on design choices are available at the following location:

@@ -11,4 +11,4 @@ Technical Briefs on design choices are available at the following location:
 
 Following is the pinout of the IC:
 
-![alt text](details/BUCK_înout.png)
+![alt text](details/BUCK/BUCK_pinout.png)
