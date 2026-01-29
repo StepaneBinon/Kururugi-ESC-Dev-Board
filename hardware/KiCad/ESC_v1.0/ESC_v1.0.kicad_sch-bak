@@ -2,14 +2,8 @@
 	(version 20250114)
 	(generator "eeschema")
 	(generator_version "9.0")
-	(uuid "30189dae-47a7-45f4-9b84-2dfd500c2612")
+	(uuid 30189dae-47a7-45f4-9b84-2dfd500c2612)
 	(paper "A4")
-	(title_block
-		(title "Kururugi-ESC")
-		(date "2026-01-27")
-		(rev "A")
-		(company "Bare Metal Foundry")
-	)
 	(lib_symbols)
 	(sheet_instances
 		(path "/"

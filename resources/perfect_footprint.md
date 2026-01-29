@@ -2,7 +2,11 @@
 
 ## Capacitors
 
-These are ChatGPT generated to get a rough idea. We will complete it with experience of our team step by step.
+These are ChatGPT generated to get a rough idea. We will complete it with experience of our team step by step. BE VERY CAREFUL!
+
+### Recommended values from reliable sources
+
+For 3V3 bypass 10uF -> 25V, 2012m, X5R
 
 ### Estimated DC Bias Loss (X7R, 5–10 V)
 
@@ -11,7 +15,7 @@ These are ChatGPT generated to get a rough idea. We will complete it with experi
 | **100 nF** | 15% | 8% | 4% | 2% | ~0% |
 | **1 µF**   | 70% | 50% | 35% | 20% | 12% |
 | **4.7 µF** | —   | —   | 60% | 40% | 25% |
-| **10 µF**  | —   | —   | —   | 55% | 35% |
+| **10 µF**  | —   | —   | — | 55% | 35% |
 | **22 µF**  | —   | —   | —   | —   | 50% |
 
 ### Estimated DC Bias Loss (X7R, 10–25 V)
