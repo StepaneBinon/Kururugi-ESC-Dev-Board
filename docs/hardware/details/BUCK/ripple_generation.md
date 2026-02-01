@@ -10,3 +10,7 @@ We estimeed that design one would be sufficient in our case.
 ![alt text](ripple_desings.png)
 
 _Note1_: Point 2 must be looked at on the final system, as we may have issue with ripple amplitude.
+
+## Technical Brief: Selection the series ripple resistor $R_{ESR}/R_3$
+
+Resr is not usefull as we deemed the ESC+MLCC ESR+intern path to already generate 25mV ripple. We will still add a $0\Omega$ capacitor in case the current ripple is not enough.

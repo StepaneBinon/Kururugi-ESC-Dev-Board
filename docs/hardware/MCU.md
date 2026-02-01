@@ -16,10 +16,13 @@ To ensure we had some headroom for the development board we are going to use the
 - CORDIC which allows computation of sin, cos, tan, atan2, vector magnitude and polar to cartesian conversion in hardware.
 - FMAC which allows FIR/IIR filtering, convolution and dot products in harware.
 
-All these give us a lot of headroom to build the fastest ESC possible.
+All these give us a lot of headroom to build the fastest ESC possible. 
+[STM32G484 peripheral details](details/MCU/MCU_peripherals.md)
 
 ## Technical Briefs
 
 Technical Briefs on design choices are available at the following location:
 - [MCU pins needed for FOC control](details/MCU/periph_list.md)
 - [Powering schem of the MCU](details/MCU/power_schem.md)
+- [Reset pin](details/MCU/reset.md)
+- [Crystal](details/MCU/crystal.md)
