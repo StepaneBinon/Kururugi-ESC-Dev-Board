@@ -10,10 +10,6 @@ We have $\Delta I_{L,\max} = 397mA$ and we want 10mV of variation maximal. Hence
 
 If FPWM is put to low, then the efficiency is increased. The low side mostfet behave as a diode and some commutation steps can be skip if low cuurent is required. However, this create some noise and less predictable behavior overall as steps can be skipped. Thus we will force CCM by putting FPWM to high.
 
-## Technical Brief: Selection of the Collector Voltage $V_{CC}$
-
-As the $V_{out}$ voltage is 10V, $V_{cc}$ could be powered using $V_{out}$ to gain efficiency and limit termal losses inside the chip (with the LM5160A chip). It is not implemented as it adds layout complexity for a gain we deemed minimal.
-
 ## Technical Brief: Selection of the Feedback Resitors
 
 $V_{OUT} = \frac{V_{REF} \times (R_{FB1} + R_{FB2})}{R_{FB1}}$, specified in the datasheet.
@@ -24,19 +20,19 @@ Where $V_{REF} = 2V$. We want $V_{OUT} = 10V$ so $\frac{R_{FB2}}{R_{FB1}} = 4$. 
 
 It is recommended to have $C_{VCC} = 1\mu F$, good quality X7R.
 
-## Technical Brief: Selection of the Current Limit Timer $C_{BST}$
-
-Soft start is important to limit current flow at ESC start as all capactior will require to be chatge simultaneously. If well control, it could even be used to reduce the resistance of the boostrap capacitor of the gate driver so we can charge it faster during normal operation.
-
-It is recommended to have $C_{BST} = 10nF$, with a good quality X7R. It is fed by $C_{VCC}$ during off times.
-
 ## Technical Brief: Selection of the Soft Start Capactor $C_{SS}$
+
+Soft start is important to limit current flow at ESC start as all capactior will require to be chatge simultaneously. If well control, it could even be used to reduce the resistance of the external boostrap diode resistance of the gate drivers so we can charge it faster during normal operation.
 
 $C_{ss}$ must be greater than 1nF. For VersionV1.0, having a long soft start seems very relevant to avoid bug. In general, having a long start for ESC does not have an major impact.
 
 $C_{SS} = \frac{I_{SS} \times T_{\text{startup}}}{V_{SS}}$
 
 With $V_{SS} = 2V$, $I_{SS} = 10\mu A$ and $C_{SS}=1\mu F$, we have $T_{\text{startup}} = 200ms$.
+
+## Technical Brief: Selection of the Current Limit Timer $C_{BST}$
+
+It is recommended to have $C_{BST} = 10nF$, with a good quality X7R. It is fed by $C_{VCC}$ during off times.
 
 ## Technical Brief: Under voltage lockout - RUV1/RUV2
 
@@ -47,3 +43,14 @@ Hence, $R_{UV2} = \frac{\Delta V_{IN}}{I_{HYS}} = 125\,\text{k}\Omega$.
 And because $V_{IN,\text{rise}} = V_{UVLO}\left(1 + \frac{R_{UV2}}{R_{UV1}}\right)$, we have $R_{UV2} = 9.25\,\text{k}\Omega$.
 
 We will take $R_{UV1}=9.31\text{k}\Omega and $R_{UV2}=124\text{k}\Omega$
+
+## Technical Brief: Input cqpqcitor CIN
+
+Maximum allowed ripple is around 0.25V. D=10/24=0.4.
+
+$C_{IN} = \frac{I_{O,\max} \cdot D \cdot (1 - D)}{\Delta V_{IN,\text{ripple}} \cdot F_{SW}} = 1\mu F$
+
+
+## Technical Brief: Selection of the Collector Voltage $V_{CC}$
+
+As the $V_{out}$ voltage is 10V, $V_{cc}$ could be powered using $V_{out}$ to gain efficiency and limit termal losses inside the chip (with the LM5160A chip). It is not implemented as it adds layout complexity for a gain we deemed minimal.
